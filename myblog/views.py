@@ -1,5 +1,6 @@
 
 from django.http import HttpResponse
+from django.shortcuts import render
 
-def ss(requset):
-    return HttpResponse("hello")
+def homepage(requset):
+    return render(requset,'jobs/home.html',)
