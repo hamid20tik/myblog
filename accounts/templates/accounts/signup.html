@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>roubina</title>
+</head>
+<body>
+{% extends 'jobs/home.html' %}
+
+    {% block content %}
+
+
+
+<div class="container text-right">
+    {% if error %}
+    {{error}}
+    <br/>
+    <br/>
+    {% endif %}
+    <h1> ثبت نام </h1>
+    <form method="POST" action="{% url 'signup' %}" >
+        {% csrf_token %}
+        :نام کاربری
+        <br/>
+        <input type="text" name="username"/>
+        <br/>
+        :رمز عبور
+        <br/>
+        <input type="password" name="password1"/>
+        <br/>
+        :تکرار رمز عبور
+        <br/>
+        <input type="password" name="password2"/>
+        <br/>
+        <br/>
+        <input class = "btn btn-primary" type="submit" value="ثبت نام"/>
+
+    </form>
+</div>
+
+
+
+
+    {% endblock %}
+
+</body>
+</html>
