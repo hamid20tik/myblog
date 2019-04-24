@@ -13,8 +13,9 @@
 
 
 <div class="container text-right">
-    {% if error %}
+    {% if error or usern %}
     {{error}}
+    کاربر {{usern}} با موفقیت خارج شد
     <br/>
     <br/>
     {% endif %}

@@ -7,10 +7,39 @@
 </head>
 <body>
 {% extends 'jobs/home.html' %}
-<div>
+
     {% block content %}
-    hello we are login
-    {% endblock %}
+
+
+
+<div class="container text-right">
+    {% if error %}
+    {{error}}
+    <br/>
+    <br/>
+    {% endif %}
+    <h1> ورود کاربران </h1>
+    <form method="POST" action="{% url 'login' %}" >
+        {% csrf_token %}
+        :نام کاربری
+        <br/>
+        <input type="text" name="username"/>
+        <br/>
+        :رمز عبور
+        <br/>
+        <input type="password" name="password"/>
+        <br/>
+        <br/>
+        <br/>
+        <input class = "btn btn-primary" type="submit" value="ورود"/>
+
+    </form>
 </div>
+
+
+
+
+    {% endblock %}
+
 </body>
 </html>

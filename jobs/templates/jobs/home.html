@@ -49,15 +49,26 @@
       <li class="nav-item active">
         <a class="nav-link" href="https://www.instagram.com/roubidecor/?hl=en">اینستاگرام <span class="sr-only">(current)</span></a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link " href="{% url 'allblog' %}">رزومه</a>
-       <li>
+      {% if user.is_authenticated %}
+      <li>
+      <a class="nav-item nav-link " href="javascript:{document.getElementById('logout').submit()}" onclick="">خروج از حساب کاربری</a>
+      <form id="logout" method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+      <input type="hidden" />
+      </form>
+      </li>
+
+      {% else %}
+      <li>
       <a class="nav-link " href="{% url 'signup' %}">ثبت نام</a>
     </li>
       <li>
       <a class="nav-link " href="{% url 'login' %}">ورود</a>
     </li>
-
+      {% endif %}
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
