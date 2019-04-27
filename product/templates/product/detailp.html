@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>فروشگاه</title>
+</head>
+<body>
+{% extends 'jobs/home.html' %}
+
+    {% block content %}
+<div class="container text-right">
+    <br/>
+    <br/>
+
+
+    <div class="row">
+        <div class="col-2">
+            <img src="{{prod.icon.url}}" class="img-fluid"/>
+        </div>
+        <div class="col-2">
+            <a href="{{prod.url}}"><h2>{{prod.title}}</h2></a>
+        </div>
+    </div>
+    <br/>
+    <br/>
+     <div class="row">
+        <div class="col-10">
+            <img src="{{prod.image.url}}" class="img-fluid"/>
+        </div>
+        <div class="col-2">
+            <a href="javascript:{document.getElementById('upvote').submit()}"><button class="btn btn-primary btn-lg btn-block"><span class="iconic iconic-caret-right" title="caret right" aria-hidden="true"></span>امتیاز {{prod.votes_total}}</button></a>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-4 text-left">
+           <h4> {{prod.hunter.username}} :تههیه کننده</h4>
+        </div>
+        <div class="col-4 text-right">
+           <h4>زمان بروز رسانی {{prod.pub_date}}</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-10">
+            <p>{{prod.body}}</p>
+        </div>
+    </div>
+
+    <form id="upvote" method="POST" action="{% url 'upvote' prod.id %}">
+        {% csrf_token %}
+        <input type="hidden">
+    </form>
+
+</div>
+    {% endblock %}
+
+</body>
+</html>

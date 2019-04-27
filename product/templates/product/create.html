@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>محصولات</title>
+</head>
+<body>
+{% extends 'jobs/home.html' %}
+
+    {% block content %}
+
+
+
+<div class="container text-right">
+    {% if error %}
+    {{error}}
+    <br/>
+    <br/>
+    {% endif %}
+    <h1> ثبت محصول </h1>
+    <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data" >
+        {% csrf_token %}
+        :نام محصول
+        <br/>
+        <input type="text" name="title"/>
+        <br/>
+        :توضیحات محصول
+        <br/>
+        <input type="text" name="body"/>
+        <br/>
+        :ادرس محصول
+        <br/>
+        <input type="text" name="url"/>
+        <br/>
+        :ایکون محصول
+        <br/>
+        <input type="file" name="icon"/>
+        <br/>
+        :تصویر اصلی محصول
+        <br/>
+        <input type="file" name="image"/>
+        <br/>
+        <br/>
+        <input class = "btn btn-primary" type="submit" value="ثبت محصول"/>
+
+    </form>
+</div>
+
+
+
+
+    {% endblock %}
+
+</body>
+</html>

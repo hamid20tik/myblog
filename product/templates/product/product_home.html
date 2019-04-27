@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>فروشگاه</title>
+</head>
+<body>
+{% extends 'jobs/home.html' %}
+
+    {% block content %}
+        {% for p in pro.all %}
+<br/>
+            <div class="row">
+                <div class="col-2" onclick="window.location='{% url 'detailp' p.id %}';" style="cursor: pointer;">
+                    <img src="{{p.image.url}}" class="img-fluid"/>
+
+                </div>
+                <div class="col-6" class="col-2" onclick="window.location='{% url 'detailp' p.id %}';" style="cursor: pointer;">
+                    <h1>{{p.title}}</h1>
+                    <p>{{p.body}}</p>
+                </div>
+                <div class="col-2">
+                    <a href="javascript:{document.getElementById('upvote{{p.id}}').submit()}"><button class="btn btn-primary btn-lg btn-block"><span class="iconic iconic-caret-right" title="caret right" aria-hidden="true"></span>امتیاز {{p.votes_total}}</button></a>
+                </div>
+
+            </div>
+                <form id="upvote{{p.id}}" method="POST" action="{% url 'upvote' p.id %}">
+                    {% csrf_token %}
+                     <input type="hidden">
+                </form>
+        {% endfor %}
+    {% endblock %}
+
+</body>
+</html>
